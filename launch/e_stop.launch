@@ -1,0 +1,4 @@
+<launch>
+  <node name="e_stop_control" pkg="faraday_e_stop" type="e_stop_control.py" output="screen" >
+  </node>
+</launch>
