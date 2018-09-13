@@ -6,20 +6,21 @@ import glob
 from std_msgs.msg import Int8
 
 def serial_ports():
+    return rospy.get_param("~port", default="/dev/ttyACM02")
 
     # this excludes your current terminal "/dev/tty"
-    ports = glob.glob('/dev/ttyACM[0-9]*')
+    # ports = glob.glob('/dev/ttyACM[0-9]*')
 
-    result = []
-    for port in ports:
-        print port
-        try:
-            ser = serial.Serial(port)
-            ser.close()
-            result.append(port)
-        except (OSError, serial.SerialException):
-            pass
-    return result
+    # result = []
+    # for port in ports:
+    #     print port
+    #     try:
+    #         ser = serial.Serial(port)
+    #         ser.close()
+    #         result.append(port)
+    #     except (OSError, serial.SerialException):
+    #         pass
+    # return result
 
 ports = serial_ports()
 ser = serial.Serial(ports[0], 115200)
